@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "528823970811",
+    "project_id": "flutter-basic-bank-app",
+    "storage_bucket": "flutter-basic-bank-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528823970811:android:bab7e020a6baf93522795e",
+        "android_client_info": {
+          "package_name": "com.example.basicmobilebankapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528823970811-6pa245ulpb70dncl02fcm72s347k1cmd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEr07lG5GXkjyTB3RMESD39ARNAV2vgiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528823970811-6pa245ulpb70dncl02fcm72s347k1cmd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/model/cust_data.dart';
-import 'package:myapp/pages/transaction_details.dart';
-import 'package:myapp/utils/database_helper.dart';
+import 'package:BasicBankApp/model/cust_data.dart';
+import 'package:BasicBankApp/pages/transaction_details.dart';
+import 'package:BasicBankApp/utils/database_helper.dart';
 
 class TransferMoney extends StatefulWidget {
   const TransferMoney({Key key, this.accno, this.name}) : super(key: key);
@@ -66,7 +66,7 @@ class _TransferMoneyState extends State<TransferMoney> {
             borderSide: BorderSide(color: Colors.black54),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green),
+            borderSide: BorderSide(color: Colors.pink[200]),
           ),
         ),
       ),
@@ -92,7 +92,7 @@ class _TransferMoneyState extends State<TransferMoney> {
             borderSide: BorderSide(color: Colors.black54),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green),
+            borderSide: BorderSide(color: Colors.pink[200]),
           ),
         ),
       ),
@@ -118,7 +118,7 @@ class _TransferMoneyState extends State<TransferMoney> {
             borderSide: BorderSide(color: Colors.black54),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green),
+            borderSide: BorderSide(color: Colors.pink[200]),
           ),
         ),
       ),
@@ -136,7 +136,7 @@ class _TransferMoneyState extends State<TransferMoney> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24.0),
         ),
-        color: Colors.blue[400],
+        color: Colors.pink[400],
         child: Text(
           'Transfer',
           style: GoogleFonts.openSans(
@@ -302,7 +302,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                               elevation: 8.0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0)),
-                              color: Colors.blue[300],
+                              color: Colors.pink[100],
                               child: ListTile(
                                 title: Text(
                                   widget.name,
@@ -314,7 +314,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                                 leading: CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child:
-                                      Icon(Icons.person, color: Colors.purple),
+                                      Icon(Icons.person, color: Colors.black),
                                 ),
                               ),
                             ),

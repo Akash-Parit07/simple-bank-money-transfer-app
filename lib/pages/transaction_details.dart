@@ -219,7 +219,7 @@ class TransactionDetailsState extends State<TransactionDetails> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
         ),
-        color: Colors.blue[400],
+        color: Colors.pink[300],
         child: Text(
           'Done',
           style: GoogleFonts.openSans(

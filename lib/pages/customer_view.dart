@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/pages/transfer_money.dart';
+import 'package:BasicBankApp/pages/transfer_money.dart';
 
 class CustomerView extends StatefulWidget {
   final int acno, phone;
@@ -35,7 +35,7 @@ class CustomerViewState extends State<CustomerView> {
                   elevation: 8.0,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
-                  color: Colors.blue[300],
+                  color: Colors.pink[100],
                   child: ListTile(
                     title: Text(
                       widget.name,
@@ -46,7 +46,7 @@ class CustomerViewState extends State<CustomerView> {
                     ),
                     leading: CircleAvatar(
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.person, color: Colors.purple),
+                      child: Icon(Icons.person, color: Colors.black),
                     ),
                   ),
                 ),
@@ -146,6 +146,7 @@ class CustomerViewState extends State<CustomerView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink[400],
         title: Text(
           "Customer",
           style: GoogleFonts.openSans(
@@ -162,7 +163,7 @@ class CustomerViewState extends State<CustomerView> {
                     name: widget.name,
                   )));
         },
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.pink[400],
         icon: Icon(Icons.arrow_forward_ios),
         label: Text(
           "Transfer Money",

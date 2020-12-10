@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/model/cust_data.dart';
-import 'package:myapp/pages/customer_view.dart';
-import 'package:myapp/utils/database_helper.dart';
+import 'package:BasicBankApp/model/cust_data.dart';
+import 'package:BasicBankApp/pages/customer_view.dart';
+import 'package:BasicBankApp/utils/database_helper.dart';
 import 'package:sqflite/sqflite.dart';
 
 class CustomersDetails extends StatefulWidget {
@@ -40,134 +40,48 @@ class CustomersDetailsState extends State<CustomersDetails> {
     });
   }
 
-  Widget bodyData() => SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-            onSelectAll: (b) {},
-            sortColumnIndex: 1,
-            sortAscending: true,
-            columnSpacing: 10,
-            columns: <DataColumn>[
-              DataColumn(
-                label: Text("Account No."),
-                numeric: true,
-                tooltip: "A/c number",
+  Widget bodyData() => ListView.builder(
+        itemCount: custData.length,
+        itemBuilder: (BuildContext context, int position) {
+          return Card(
+            elevation: 1.0,
+            color: Colors.white,
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.pink[200],
+                child: Icon(
+                  Icons.account_balance_rounded,
+                  color: Colors.black,
+                ),
               ),
-              DataColumn(
-                label: Text("Customer Name"),
-                numeric: false,
-                tooltip: "Name of customer",
+              title: Text(
+                this.custData[position].custName,
+                style: GoogleFonts.openSans(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              DataColumn(
-                label: Text("Address"),
-                numeric: false,
-                tooltip: "Address of customer",
+              subtitle: Text(
+                "A/c - " + this.custData[position].accountNo.toString(),
+                style: GoogleFonts.openSans(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-              DataColumn(
-                label: Text("Phone No."),
-                numeric: false,
-                tooltip: "Phone no of customer",
-              ),
-              DataColumn(
-                label: Text("Balance"),
-                numeric: false,
-                tooltip: "Balance into account",
-              ),
-            ],
-            rows: custData
-                .map(
-                  (custData) => DataRow(
-                    cells: [
-                      DataCell(
-                        GestureDetector(
-                          child: Center(
-                              child: Text(custData.accountNo.toString())),
-                          onTap: () =>
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => CustomerView(
-                              acno: custData.accountNo,
-                              name: custData.custName,
-                              addr: custData.custAddr,
-                              phone: custData.phoneNo,
-                              bal: custData.bal,
-                            ),
-                          )),
-                        ),
-                        showEditIcon: false,
-                        placeholder: false,
-                      ),
-                      DataCell(
-                        GestureDetector(
-                          child: Text(custData.custName),
-                          onTap: () =>
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => CustomerView(
-                              acno: custData.accountNo,
-                              name: custData.custName,
-                              addr: custData.custAddr,
-                              phone: custData.phoneNo,
-                              bal: custData.bal,
-                            ),
-                          )),
-                        ),
-                        showEditIcon: false,
-                        placeholder: false,
-                      ),
-                      DataCell(
-                        GestureDetector(
-                          child: Text(custData.custAddr),
-                          onTap: () =>
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => CustomerView(
-                              acno: custData.accountNo,
-                              name: custData.custName,
-                              addr: custData.custAddr,
-                              phone: custData.phoneNo,
-                              bal: custData.bal,
-                            ),
-                          )),
-                        ),
-                        showEditIcon: false,
-                        placeholder: false,
-                      ),
-                      DataCell(
-                        GestureDetector(
-                          child: Text(custData.phoneNo.toString()),
-                          onTap: () =>
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => CustomerView(
-                              acno: custData.accountNo,
-                              name: custData.custName,
-                              addr: custData.custAddr,
-                              phone: custData.phoneNo,
-                              bal: custData.bal,
-                            ),
-                          )),
-                        ),
-                        showEditIcon: false,
-                        placeholder: false,
-                      ),
-                      DataCell(
-                        GestureDetector(
-                          child: Text(custData.bal.toString()),
-                          onTap: () =>
-                              Navigator.of(context).push(MaterialPageRoute(
-                            builder: (BuildContext context) => CustomerView(
-                              acno: custData.accountNo,
-                              name: custData.custName,
-                              addr: custData.custAddr,
-                              phone: custData.phoneNo,
-                              bal: custData.bal,
-                            ),
-                          )),
-                        ),
-                        showEditIcon: false,
-                        placeholder: false,
-                      )
-                    ],
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => CustomerView(
+                    acno: custData[position].accountNo,
+                    name: custData[position].custName,
+                    addr: custData[position].custAddr,
+                    phone: custData[position].phoneNo,
+                    bal: custData[position].bal,
                   ),
-                )
-                .toList()),
+                ));
+              },
+            ),
+          );
+        },
       );
 
   message(String msg) {
@@ -195,6 +109,7 @@ class CustomersDetailsState extends State<CustomersDetails> {
     }
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.pink[400],
         title: Text(
           "Customer Details",
           style: GoogleFonts.openSans(
@@ -217,13 +132,7 @@ class CustomersDetailsState extends State<CustomersDetails> {
                 child: CircularProgressIndicator(),
               ),
             )
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  bodyData(),
-                ],
-              ),
-            ),
+          : bodyData(),
     );
   }
 }
